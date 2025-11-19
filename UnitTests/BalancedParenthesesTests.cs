@@ -18,7 +18,6 @@ public class BalancedParenthesesTests
     [TestMethod]
     public void Parentheses3()
     {
-
         Assert.IsFalse(BalancedParentheses.Program.IsBalanced("{ [ ] ) ) ( ( "));
     }
 
@@ -38,35 +37,30 @@ public class BalancedParenthesesTests
     [TestMethod]
     public void Parentheses6()
     {
-
         Assert.IsFalse(BalancedParentheses.Program.IsBalanced("("));
     }
 
     [TestMethod]
     public void Parentheses7()
     {
-
         Assert.IsFalse(BalancedParentheses.Program.IsBalanced("["));
     }
 
     [TestMethod]
     public void Parentheses8()
     {
-
         Assert.IsFalse(BalancedParentheses.Program.IsBalanced("}"));
     }
 
     [TestMethod]
     public void Parentheses9()
     {
-
         Assert.IsFalse(BalancedParentheses.Program.IsBalanced(")"));
     }
 
     [TestMethod]
     public void Parentheses10()
     {
-
         Assert.IsFalse(BalancedParentheses.Program.IsBalanced("]"));
     }
 
@@ -183,14 +177,12 @@ namespace DataStructures.Stack
     [TestMethod]
     public void Parentheses1withNoBrace()
     {
-
         Assert.IsTrue(BalancedParentheses.Program.IsBalanced("1"));
     }
 
     [TestMethod]
     public void ParenthesesWithNoBraces()
     {
-
         Assert.IsTrue(BalancedParentheses.Program.IsBalanced("When in the course of Human Events..."));
     }
 }

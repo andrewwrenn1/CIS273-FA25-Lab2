@@ -160,18 +160,17 @@ public class ReverseFirstKTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void ReverseFirstKTest_NullQueue()
     {
         Queue<int> queue = null;
 
-        Program.ReverseFirstK(queue, 3);
-
-        // Assert: Handled by ExpectedException attribute
+        Assert.Throws<ArgumentNullException>(() =>
+        {
+            Program.ReverseFirstK(queue, 3);
+        });
     }
 
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
     public void ReverseFirstKTest_NegativeK()
     {
         var queue = new Queue<int>();
@@ -179,9 +178,7 @@ public class ReverseFirstKTests
         queue.Enqueue(2);
         queue.Enqueue(3);
 
-        Program.ReverseFirstK(queue, -1);
-
-        // Assert: Handled by ExpectedException attribute
+        Assert.Throws<ArgumentException>(()=> { Program.ReverseFirstK(queue, -1);});
     }
 
     [TestMethod]

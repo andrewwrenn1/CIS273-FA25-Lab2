@@ -1,33 +1,57 @@
-﻿namespace ReverseFirstK;
+﻿using System;
+using System.Collections.Generic;
 
-public class Program
+namespace ReverseFirstK
 {
-     public static void Main(string[] args)
-     {
-     }
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Queue<int> q = new Queue<int>();
+            for (int i = 1; i <= 7; i++)
+                q.Enqueue(i);
 
-     /// <summary>
-     /// Write a method void ReverseFirstK(Queue q, int k) that reverses the first k elements of the given queue. 
-     /// You may only use stacks and queues (NOT deques) to do this. 
-     /// </summary>
-     /// <typeparam name="T"></typeparam>
-     /// <param name="queue"></param>
-     /// <param name="k"></param>
-     /// <returns></returns>
-     public static void ReverseFirstK<T>(Queue<T> queue, int k)
-     {
-          // if k > length, then just reverse the entire queue
-          // if k < 0, then do nothing
+            Console.WriteLine("Original queue: " + string.Join(", ", q));
 
+            ReverseFirstK(q, 4);
 
-          // 1) dequeue first k elements and push them on a stack
+            Console.WriteLine("After reversing first 4 elements: " + string.Join(", ", q));
+        }
 
-          // 2) pop elements from stack and enqueue on queue 
+        /// <summary>
+        /// Reverses the first k elements of a given queue.
+        /// </summary>
+        public static void ReverseFirstK<T>(Queue<T> queue, int k)
+        {
+            if (queue == null)
+                throw new ArgumentNullException(nameof(queue));
 
-          // 3)  dequeue and enqueue q.length - k times
+            if (k <= 0 || queue.Count == 0)
+                return;
 
+            if (k > queue.Count)
+                k = queue.Count;
 
+            Stack<T> stack = new Stack<T>();
 
-     }
+            // Step 1: Dequeue first k elements and push them onto stack
+            for (int i = 0; i < k; i++)
+            {
+                stack.Push(queue.Dequeue());
+            }
+
+            // Step 2: Pop from stack and enqueue back to queue
+            while (stack.Count > 0)
+            {
+                queue.Enqueue(stack.Pop());
+            }
+
+            // Step 3: Move the remaining (n - k) elements to the back
+            int remaining = queue.Count - k;
+            for (int i = 0; i < remaining; i++)
+            {
+                queue.Enqueue(queue.Dequeue());
+            }
+        }
+    }
 }
-

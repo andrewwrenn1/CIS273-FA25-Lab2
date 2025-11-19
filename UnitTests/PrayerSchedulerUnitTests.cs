@@ -58,7 +58,7 @@ namespace UnitTests
 
             Assert.AreEqual(1, prayerScheduler.NumDailyPrayers);
             Assert.AreEqual(1, prayerScheduler.NumNonDailyPrayers);
-            Assert.ThrowsException<DuplicateIDException>(() =>
+            Assert.ThrowsExactly<DuplicateIDException>(() =>
             {
                 prayerScheduler.AddPrayer(new Prayer() { ID = 1, Text = "test40", IsDaily = false, IsAnswered = true, Category = "Name of God", Scripture = "John 3:15" });
             });
@@ -593,5 +593,4 @@ namespace UnitTests
 
 
 
-    }
-
+}
