@@ -66,19 +66,5 @@ public class MusicPlayer
         }
     }
 
-    public Song Shuffle()
-    {
-        // get random int in range
-        int randomIndex = random.Next(upNext.Count);
 
-        // remove the randomIndex-th item from the upNext queue
-        Rotate(randomIndex);
-        var song = upNext.Dequeue();
-        history.Push(song);
-
-        Rotate(upNext.Count - randomIndex);
-
-        return song;
-    }
-    
 }
